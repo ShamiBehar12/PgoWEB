@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Consulta por Género y Director</h2>
+<form method="get" action="/peliculas/actores_por_genero_director">
+    <label for="genero">Género:</label>
+    <input type="text" id="genero" name="genero" required value="{{ genero }}">
+
+    <label for="director">Director:</label>
+    <input type="text" id="director" name="director" required value="{{ director }}">
+
+    <button type="submit">Consultar</button>
+</form>
+
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% endif %}
+
+{% if peliculas %}
+    <h3>Resultados:</h3>
+    <ul>
+        {% for pelicula in peliculas %}
+            <li>
+                <strong>Título:</strong> {{ pelicula.titulo }}<br>
+                <strong>Año:</strong> {{ pelicula.anio }}<br>
+                <strong>Actores:</strong> {{ pelicula.actores }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    {% if not error %}
+        <p>No se encontraron resultados para el género "{{ genero }}" y el director "{{ director }}".</p>
+    {% endif %}
+{% endif %}
+{% endblock %}
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas de Películas</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Consultas de Películas</h1>
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/peliculas/actores_por_genero_director_duracion">Consulta por Actores, Género, Director y Duración</a>
+            <a href="/peliculas/actores_por_genero_director">Consulta por Actores, Género y Director</a>
+            <a href="/peliculas/por_genero_duracion">Consulta por Género y Duración</a>
+            <a href="/peliculas/por_region_epoca">Consulta por Región y Época</a>
+            <a href="/peliculas/colaboraciones_frecuentes">Consulta por Colaboraciones</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

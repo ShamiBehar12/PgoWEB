@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Consulta: Colaboraciones más frecuentes entre Actores y Directores</h2>
+    <form method="GET" action="/peliculas/colaboraciones_frecuentes">
+        <button type="submit">Ver Colaboraciones</button>
+    </form>
+
+    {% if colaboraciones %}
+        <h2>Resultados:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Actor</th>
+                    <th>Director</th>
+                    <th>Colaboraciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for colaboracion in colaboraciones %}
+                <tr>
+                    <td>{{ colaboracion.actor }}</td>
+                    <td>{{ colaboracion.director }}</td>
+                    <td>{{ colaboracion.colaboraciones }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No se encontraron colaboraciones frecuentes o ocurrió un error.</p>
+        {% if error %}
+            <p>Error: {{ error }}</p>
+        {% endif %}
+    {% endif %}
+{% endblock %}
